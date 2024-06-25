@@ -1,0 +1,1 @@
+Map<String, dynamic> catMap = {'eating': 1, 'sleep': 2};
