@@ -4,7 +4,8 @@ import 'package:dio/dio.dart';
 
 class DioHelper {
   static late Dio dio;
-   static init() {
+
+  static init() {
     dio = Dio(
       BaseOptions(
         baseUrl: 'http://localhost:8000/api/',
@@ -29,20 +30,24 @@ class DioHelper {
             }));
   }
 
-    static Future<Response> tips(
+  static Future<Response> tips(
       {required String description, required int category_id}) async {
-    return await dio.post('admin/addadvice',
-        data: {'description': description, 'category_id': category_id},
-        options: Options(
-            // headers: {
-            //   "Access-Control-Allow-Origin": "*",
-            //   "Access-Control-Allow-Credentials": true,
-            // },
-            headers: {'Accept': 'application/json'},
-            followRedirects: false,
-            validateStatus: (status) {
-              return status! < 500;
-            }));
+    return await dio.post(
+      'addadvice',
+      queryParameters: {'description': description, 'category_id': category_id},
+      //data: {'description': description, 'category_id': category_id},
+      options: Options(
+        // headers: {
+        //   "Access-Control-Allow-Origin": "*",
+        //   "Access-Control-Allow-Credentials": true,
+        // },
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
   }
-
 }

@@ -22,7 +22,8 @@ class _EatingState extends State<Eating> {
   
 
   void _addtip() async {
-    if (_formKey.currentState!.validate()) {
+    print('in _addtip-------------------');
+    //if (_formKey.currentState!.validate()) {
       setState(() {
         isLoading = true;
       });
@@ -35,25 +36,29 @@ class _EatingState extends State<Eating> {
       //   email: emailController.text,
       //   password: passwordController.text,
       // );
-      bool success = await addtipsService.tips(tipsModel);
-
+    ///THIS SHOULD NOT BE WRITTEN HERE, BECAUSE THE FUNCTION WOULD RETURN FALSE
+    ///BEFORE FINISHING THE REQUEST
+      bool success = addtipsService.tips(tipsModel, context);
+      print('success $success');
       setState(() {
         isLoading = false;
       });
-
+      ///THIS NEED TO BE CHANGED
       if (success) {
         print(description);
         print(category_id);
+        //const SnackBar(content: Text('Tip added successfully'));
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('add tip faild. Please try again.')),
-        );
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   const SnackBar(content: Text('add tip faild. Please try again.')),
+        // );
       }
-    }
+    //}
   }
 
   @override
   Widget build(BuildContext context) {
+    print('in Eating ------------------------------');
     return Scaffold(
       body: Stack(
         children: [

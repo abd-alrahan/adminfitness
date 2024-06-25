@@ -1,4 +1,5 @@
 import 'package:adminfitness/api/dio_helper.dart';
+import 'package:adminfitness/cattips/eating.dart';
 import 'package:adminfitness/log+homepage/login.dart';
 import 'package:adminfitness/log+homepage/homepage.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class Admin extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const LogIn()),
+        GetPage(name: '/', page: () => const Eating()),
         GetPage(name: '/home', page: () => const Homepage()),
       ],
     );
