@@ -2,7 +2,6 @@
 
 import 'package:adminfitness/api/dio_helper.dart';
 import 'package:adminfitness/models/models.dart';
-import 'package:get/get.dart';
 
 class AddDeitsService {
   Future<bool> deits(DeitsModel deitsModel) async {
