@@ -45,14 +45,14 @@ class DioHelper {
     );
   }
 
-   static Future<Response> deits({
+  static Future<Response> deits({
     required String time,
     required int day_id,
     required String description,
     required Uint8List image,
   }) async {
     String base64Image = base64Encode(image);
-    
+
     return await dio.post(
       'addrecipe',
       data: {
@@ -63,8 +63,9 @@ class DioHelper {
       },
       options: Options(
         headers: {'Accept': 'application/json'},
-        followRedirects: false,
+        followRedirects: true,
         validateStatus: (status) {
+          print('the status is $status');
           return true;
         },
       ),

@@ -2,6 +2,7 @@
 
 import 'package:adminfitness/api/dio_helper.dart';
 import 'package:adminfitness/models/models.dart';
+import 'package:get/get.dart';
 
 class AddDeitsService {
   Future<bool> deits(DeitsModel deitsModel) async {
@@ -12,6 +13,11 @@ class AddDeitsService {
         description: deitsModel.description,
         image: deitsModel.image,
       );
+      print('nooo_______________________________');
+      print(deitsModel.time);
+      print(deitsModel.day_id);
+      print(deitsModel.description);
+      //print(deitsModel.image);
       print(response.statusCode);
       if (response.statusCode == 200) {
         return true;
