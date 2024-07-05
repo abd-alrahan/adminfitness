@@ -55,33 +55,28 @@ class Homepage extends StatelessWidget {
             height: 641,
             width: 350,
             list: [
-              SizedBox(
-                  height: 100,
-                  width: 250,
-                  child: Addtips(
-                      buttonText: 'Add exercises',
-                      isTips: true,
-                      routName2: Weightlosse())),
-              SizedBox(
-                height: 100,
-                width: 250,
-                child: Addtips(
-                    buttonText: 'Add deits',
-                    isTips: true,
-                    routName2: Weightlossd()),
-              ),
-              SizedBox(
-                height: 100,
-                width: 250,
-                child: Addtips(
-                  buttonText: 'Add tips',
-                  list: [
-                    Addtips(buttonText: 'Eating', routName: Eating()),
-                    Addtips(buttonText: 'Sleep', routName: Sleep()),
-                  ],
-                ),
-              ),
-            ],
+                      SizedBox(
+                        height: 100,
+                        width: 250,
+                        child: Addtips(buttonText: 'Add exercises',isTips: true, routName2: Weightlosse())
+                      ),
+                      SizedBox(
+                        height: 100,
+                        width: 250,
+                        child: Addtips(
+                          buttonText: 'Add deits', isTips: true, routName2: Weightlossd()),
+                      ),
+                      SizedBox(
+                        height: 100,
+                        width: 250,
+                        child: Addtips(
+                          buttonText: 'Add tips', list: [
+                            Addtips(buttonText: 'Eating',routName: Eating()),
+                            Addtips(buttonText: 'Sleep',routName:  Sleep()),
+                          ],
+                        ),
+                      ),
+                    ],
           ),
         ),
         Positioned(
@@ -91,41 +86,42 @@ class Homepage extends StatelessWidget {
             height: 641,
             width: 350,
             list: [
-              SizedBox(
-                width: 175,
-                height: 175,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(90),
-                    child: Image.asset('assets/images/adminpic2.jpg')),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 10, right: 10),
-                child: MyText(
-                  text:
-                      'Manage your sports world with ease and efficiency. Welcome to the control center for all things sports!',
-                  fontsize: 20,
-                ),
-              ),
-              Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10),
-                    child: MyText(
-                      text: 'Number of users :',
-                      fontsize: 20,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    width: 325,
-                    child: Addtips(
-                        buttonText: '100 USERS', routName: const Usersinfo()),
-                  )
-                ],
-              ),
-            ],
+                      SizedBox(
+                        width: 175,
+                        height: 175,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(90),
+                            child: Image.asset('assets/images/adminpic2.jpg')),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 10, right: 10),
+                        child: MyText(
+                          text:
+                              'Manage your sports world with ease and efficiency. Welcome to the control center for all things sports!',
+                          fontsize: 20,
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            child: MyText(
+                              text: 'Number of users :',
+                              fontsize: 20,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          SizedBox(
+                            width: 325,
+                            child: Addtips(
+                                buttonText: '100 USERS',
+                                routName: const Usersinfo()),
+                          )
+                        ],
+                      ),
+                    ],
           ),
         ),
       ],

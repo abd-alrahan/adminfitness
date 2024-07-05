@@ -163,16 +163,16 @@ class CustomTextFormField extends StatelessWidget {
   final FormFieldSetter<String>? onSaved;
   final bool obscureText;
   final Function(String)? onChanged;
-  const CustomTextFormField(
-      {Key? key,
-      required this.labelText,
-      this.prefixIcon,
-      this.validator,
-      this.onSaved,
-      this.obscureText = false,
-      TextEditingController? controller,
-      this.onChanged})
-      : super(key: key);
+  const CustomTextFormField({
+    Key? key,
+    required this.labelText,
+    this.prefixIcon,
+    this.validator,
+    this.onSaved,
+    this.obscureText = false,
+    TextEditingController? controller,
+    this.onChanged
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
