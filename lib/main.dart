@@ -1,5 +1,4 @@
 import 'package:adminfitness/api/dio_helper.dart';
-import 'package:adminfitness/cattips/eating.dart';
 import 'package:adminfitness/log+homepage/login.dart';
 import 'package:adminfitness/log+homepage/homepage.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:get/get.dart';
 
 void main() {
   DioHelper.init();
-
   runApp(const Admin());
 }
 
@@ -20,7 +18,7 @@ class Admin extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const Eating()),
+        GetPage(name: '/', page: () => const LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
       ],
     );

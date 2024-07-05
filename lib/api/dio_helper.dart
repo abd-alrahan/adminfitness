@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, dead_code
 
 import 'package:dio/dio.dart';
 
@@ -19,10 +19,6 @@ class DioHelper {
     return await dio.post('admin/login',
         data: {'email': email, 'password': password},
         options: Options(
-            // headers: {
-            //   "Access-Control-Allow-Origin": "*",
-            //   "Access-Control-Allow-Credentials": true,
-            // },
             headers: {'Accept': 'application/json'},
             followRedirects: false,
             validateStatus: (status) {
@@ -37,10 +33,6 @@ class DioHelper {
       queryParameters: {'description': description, 'category_id': category_id},
       //data: {'description': description, 'category_id': category_id},
       options: Options(
-        // headers: {
-        //   "Access-Control-Allow-Origin": "*",
-        //   "Access-Control-Allow-Credentials": true,
-        // },
         headers: {'Accept': 'application/json'},
         followRedirects: false,
         validateStatus: (status) {

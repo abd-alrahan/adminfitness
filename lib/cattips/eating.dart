@@ -14,7 +14,6 @@ class Eating extends StatefulWidget {
 }
 
 class _EatingState extends State<Eating> {
-  final _formKey = GlobalKey<FormState>();
   final AddtipsService addtipsService = AddtipsService();
   bool isLoading = false;
   String description = '';
@@ -95,6 +94,7 @@ class _EatingState extends State<Eating> {
                               padding: const EdgeInsets.all(15),
                               minWidth: 400,
                               color: const Color.fromARGB(255, 49, 0, 71),
+                               onPressed: _addtip,
                              
                               child: const Text(
                                 'submit',
@@ -104,7 +104,6 @@ class _EatingState extends State<Eating> {
                                   color: Color.fromARGB(255, 161, 153, 153),
                                 ),
                               ),
-                               onPressed: _addtip,
                               ),
                     ),
                   ),

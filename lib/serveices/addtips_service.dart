@@ -10,13 +10,16 @@ class AddtipsService {
         .then((value) {
       print(value.data);
       print(value.statusCode);
+      if (value.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Tip added successfully')));
-      //const SnackBar(content: Text('Tip added successfully'), );
-      return value.statusCode == 200;
+      } else {
+        ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Failed')));
+      }
     }).onError((error, stackTrace) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed')));
+      
       print(error.toString());
-      return false;
+      
     });
     return false;
   }
