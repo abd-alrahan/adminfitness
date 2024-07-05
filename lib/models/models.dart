@@ -21,7 +21,6 @@ class LogInModel {
   }
 }
 
-
 class TipsModel {
   final String description;
   final int category_id;

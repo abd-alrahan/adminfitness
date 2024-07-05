@@ -3,7 +3,6 @@ import 'package:adminfitness/login/loginController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class LogIn extends StatelessWidget {
   LogIn({Key? key}) : super(key: key);
 
@@ -43,7 +42,8 @@ class LogIn extends StatelessWidget {
                 Container(
                   width: 320,
                   margin: const EdgeInsets.only(top: 50, left: 950, bottom: 50),
-                  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                   decoration: BoxDecoration(
                     color: Colors.blueGrey.withOpacity(0.25),
                     borderRadius: BorderRadius.circular(25),

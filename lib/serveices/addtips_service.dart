@@ -3,8 +3,6 @@
 import 'package:adminfitness/api/dio_helper.dart';
 import 'package:adminfitness/models/models.dart';
 
-
-
 class AddtipsService {
   Future<bool> tips(TipsModel tipsModel) async {
     try {
@@ -23,4 +21,3 @@ class AddtipsService {
     }
   }
 }
-

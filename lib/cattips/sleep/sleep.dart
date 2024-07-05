@@ -27,36 +27,35 @@ class Sleep extends StatelessWidget {
                       text:
                           'make your tips comfortable, the best way to get healthy the perfect sleep tips!!',
                       fontsize: 20),
-                   CustomTextFormField(
+                  CustomTextFormField(
                       onChanged: (text) {
-                      _sleepController.description.value = text;
-                    },
+                        _sleepController.description.value = text;
+                      },
                       labelText: 'description of the tip'),
                   Obx(() {
-                      return  _sleepController.isLoading.value
-                            ? const CircularProgressIndicator()
-                            : SizedBox(
-                              width: 225,
-                              child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  padding: const EdgeInsets.all(15),
-                                  minWidth: 400,
-                                  color: const Color.fromARGB(255, 49, 0, 71),
-                                  onPressed: _sleepController.addTip,
-                                  child: const Text(
-                                    'Submit',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700,
-                                      color: Color.fromARGB(255, 161, 153, 153),
-                                    ),
-                                  ),
+                    return _sleepController.isLoading.value
+                        ? const CircularProgressIndicator()
+                        : SizedBox(
+                            width: 225,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              padding: const EdgeInsets.all(15),
+                              minWidth: 400,
+                              color: const Color.fromARGB(255, 49, 0, 71),
+                              onPressed: _sleepController.addTip,
+                              child: const Text(
+                                'Submit',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromARGB(255, 161, 153, 153),
                                 ),
-                            );
-                      
-                    }),
+                              ),
+                            ),
+                          );
+                  }),
                 ],
               ),
             ),
