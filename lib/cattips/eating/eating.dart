@@ -35,7 +35,6 @@ class Eating extends StatelessWidget {
                     },
                     labelText: 'Description of the tip',
                   ),
-                  const SizedBox(height: 5),
                      Obx(() {
                       return  _eatingController.isLoading.value
                             ? const CircularProgressIndicator()

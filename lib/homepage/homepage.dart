@@ -72,7 +72,7 @@ class Homepage extends StatelessWidget {
                         child: Addtips(
                           buttonText: 'Add tips', list: [
                             Addtips(buttonText: 'Eating',routName: Eating()),
-                            Addtips(buttonText: 'Sleep',routName: const Sleep()),
+                            Addtips(buttonText: 'Sleep',routName: Sleep()),
                           ],
                         ),
                       ),
