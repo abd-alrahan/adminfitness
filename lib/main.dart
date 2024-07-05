@@ -1,6 +1,6 @@
 import 'package:adminfitness/api/dio_helper.dart';
 import 'package:adminfitness/homepage/homepage.dart';
-import 'package:adminfitness/log+homepage/login.dart';
+import 'package:adminfitness/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,7 @@ class Admin extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const LogIn()),
+        GetPage(name: '/', page: () => LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
       ],
     );

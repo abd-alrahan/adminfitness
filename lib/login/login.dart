@@ -1,53 +1,14 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, sort_child_properties_last
-
-import 'package:adminfitness/models/models.dart';
-import 'package:adminfitness/serveices/login_service.dart';
-import 'package:flutter/material.dart';
 import 'package:adminfitness/components/components.dart';
+import 'package:adminfitness/login/loginController.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({Key? key}) : super(key: key);
 
-  @override
-  _LogInState createState() => _LogInState();
-}
+class LogIn extends StatelessWidget {
+  LogIn({Key? key}) : super(key: key);
 
-class _LogInState extends State<LogIn> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final LoginService loginService = LoginService();
+  final LoginController _loginController = Get.put(LoginController());
   final _formKey = GlobalKey<FormState>();
-  bool isLoading = false;
-  String email = '', password = '';
-  void _login() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        isLoading = true;
-      });
-      print('in screen $email');
-      LogInModel loginModel = LogInModel(
-        email: email,
-        password: password,
-      );
-      // LogInModel loginModel = LogInModel(
-      //   email: emailController.text,
-      //   password: passwordController.text,
-      // );
-      bool success = await loginService.login(loginModel);
-
-      setState(() {
-        isLoading = false;
-      });
-
-      if (success) {
-        Navigator.pushNamed(context, '/home');
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login failed. Please try again.')),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +29,6 @@ class _LogInState extends State<LogIn> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //صورة اللوغو
                 Container(
                   width: 300,
                   height: 150,
@@ -80,12 +40,10 @@ class _LogInState extends State<LogIn> {
                     ),
                   ),
                 ),
-                //المربع تبع اللوغ ان
                 Container(
                   width: 320,
                   margin: const EdgeInsets.only(top: 50, left: 950, bottom: 50),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                   decoration: BoxDecoration(
                     color: Colors.blueGrey.withOpacity(0.25),
                     borderRadius: BorderRadius.circular(25),
@@ -102,9 +60,8 @@ class _LogInState extends State<LogIn> {
                       const SizedBox(height: 60),
                       CustomTextFormField(
                         onChanged: (text) {
-                          email = text;
+                          _loginController.email.value = text;
                         },
-                        controller: emailController,
                         labelText: 'Email',
                         prefixIcon: Icons.person,
                         validator: (value) {
@@ -117,9 +74,8 @@ class _LogInState extends State<LogIn> {
                       const SizedBox(height: 20),
                       CustomTextFormField(
                         onChanged: (text) {
-                          password = text;
+                          _loginController.password.value = text;
                         },
-                        controller: passwordController,
                         labelText: 'Password',
                         prefixIcon: Icons.lock,
                         obscureText: true,
@@ -131,25 +87,27 @@ class _LogInState extends State<LogIn> {
                         },
                       ),
                       const SizedBox(height: 35),
-                      isLoading
-                          ? const CircularProgressIndicator()
-                          : MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              padding: const EdgeInsets.all(15),
-                              minWidth: 400,
-                              color: const Color.fromARGB(255, 49, 0, 71),
-                              child: const Text(
-                                'Log In',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color.fromARGB(255, 161, 153, 153),
+                      Obx(() {
+                        return _loginController.isLoading.value
+                            ? const CircularProgressIndicator()
+                            : MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                              ),
-                              onPressed: _login,
-                            ),
+                                padding: const EdgeInsets.all(15),
+                                minWidth: 400,
+                                color: const Color.fromARGB(255, 49, 0, 71),
+                                onPressed: _loginController.login,
+                                child: const Text(
+                                  'Log In',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color.fromARGB(255, 161, 153, 153),
+                                  ),
+                                ),
+                              );
+                      }),
                     ],
                   ),
                 ),
