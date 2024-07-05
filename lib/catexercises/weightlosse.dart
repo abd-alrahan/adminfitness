@@ -27,7 +27,7 @@ class Weightlosse extends StatelessWidget {
               width: 600,
               padding: 25,
               list: [
-                MyText(text: 'Exercises', fontsize: 40),
+                MyText(text: 'Weight Loss Exercises', fontsize: 40),
                 CatExercises(
                     selectedValue: controller.selectedCategory,
                     onChanged: (value) { controller.setSelectedCategory(value);}),

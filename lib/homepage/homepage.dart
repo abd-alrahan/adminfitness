@@ -1,6 +1,10 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
 
+import 'package:adminfitness/catdeits/flexibilityd.dart';
+import 'package:adminfitness/catdeits/musclybuildd.dart';
 import 'package:adminfitness/catdeits/weightlossd.dart';
+import 'package:adminfitness/catexercises/flexibilitye.dart';
+import 'package:adminfitness/catexercises/musclybuilde.dart';
 import 'package:adminfitness/catexercises/weightlosse.dart';
 import 'package:adminfitness/cattips/eating/eating.dart';
 import 'package:adminfitness/cattips/sleep/sleep.dart';
@@ -55,28 +59,53 @@ class Homepage extends StatelessWidget {
             height: 641,
             width: 350,
             list: [
-                      SizedBox(
-                        height: 100,
-                        width: 250,
-                        child: Addtips(buttonText: 'Add exercises',isTips: true, routName2: Weightlosse())
-                      ),
-                      SizedBox(
-                        height: 100,
-                        width: 250,
-                        child: Addtips(
-                          buttonText: 'Add deits', isTips: true, routName2: Weightlossd()),
-                      ),
-                      SizedBox(
-                        height: 100,
-                        width: 250,
-                        child: Addtips(
-                          buttonText: 'Add tips', list: [
-                            Addtips(buttonText: 'Eating',routName: Eating()),
-                            Addtips(buttonText: 'Sleep',routName:  Sleep()),
-                          ],
-                        ),
-                      ),
+              SizedBox(
+                  height: 100,
+                  width: 250,
+                  child: Addtips(
+                    buttonText: 'Add exercises',
+                    list: [
+                      Addtips(
+                          buttonText: 'Weight Loss Exercise',
+                          routName: Weightlosse()),
+                      Addtips(
+                          buttonText: 'Muscly Building Exercise',
+                          routName: Musclybuilde()),
+                      Addtips(
+                          buttonText: 'Flexibility Exercise',
+                          routName: Flexibilitye()),
                     ],
+                  )),
+              SizedBox(
+                height: 100,
+                width: 250,
+                child: Addtips(
+                  buttonText: 'Add deits',
+                  list: [
+                    Addtips(
+                        buttonText: 'Weight Loss Deit',
+                        routName: Weightlossd()),
+                    Addtips(
+                        buttonText: 'Muscly Building Deit',
+                        routName: Musclybuildd()),
+                    Addtips(
+                        buttonText: 'Flexibility Deit',
+                        routName: Flexibilityd()),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 100,
+                width: 250,
+                child: Addtips(
+                  buttonText: 'Add tips',
+                  list: [
+                    Addtips(buttonText: 'Eating', routName: Eating()),
+                    Addtips(buttonText: 'Sleep', routName: Sleep()),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -86,42 +115,41 @@ class Homepage extends StatelessWidget {
             height: 641,
             width: 350,
             list: [
-                      SizedBox(
-                        width: 175,
-                        height: 175,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(90),
-                            child: Image.asset('assets/images/adminpic2.jpg')),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 10, right: 10),
-                        child: MyText(
-                          text:
-                              'Manage your sports world with ease and efficiency. Welcome to the control center for all things sports!',
-                          fontsize: 20,
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10),
-                            child: MyText(
-                              text: 'Number of users :',
-                              fontsize: 20,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          SizedBox(
-                            width: 325,
-                            child: Addtips(
-                                buttonText: '100 USERS',
-                                routName: const Usersinfo()),
-                          )
-                        ],
-                      ),
-                    ],
+              SizedBox(
+                width: 175,
+                height: 175,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(90),
+                    child: Image.asset('assets/images/adminpic2.jpg')),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                child: MyText(
+                  text:
+                      'Manage your sports world with ease and efficiency. Welcome to the control center for all things sports!',
+                  fontsize: 20,
+                ),
+              ),
+              Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    child: MyText(
+                      text: 'Number of users :',
+                      fontsize: 20,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    width: 325,
+                    child: Addtips(
+                        buttonText: '100 USERS', routName: const Usersinfo()),
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ],

@@ -230,7 +230,7 @@ class BackgroundImage extends StatelessWidget {
   }
 }
 
-//تحديد تصنيف التمارين
+//تحديد تصنيف الأيام
 class CatExercises extends StatelessWidget {
   var selectedValue;
   final Function(int) onChanged;
@@ -243,12 +243,13 @@ class CatExercises extends StatelessWidget {
     return Obx(() {
       return DropdownButton<int>(
         value: selectedValue.value == 0 ? null : selectedValue.value,
-        hint: const Text('Select a Category'),
-        items: const [
-          DropdownMenuItem(value: 1, child: Text('Weight Loss')),
-          DropdownMenuItem(value: 2, child: Text('Muscly Building')),
-          DropdownMenuItem(value: 3, child: Text('Flexibility')),
-        ],
+        hint: const Text('Select a Day'),
+        items: List.generate(15, (index) => index + 1)
+            .map((day) => DropdownMenuItem(
+                  value: day,
+                  child: Text('Day $day'),
+                ))
+            .toList(),
         onChanged: (value) {
           if (value != null) {
             onChanged(value);

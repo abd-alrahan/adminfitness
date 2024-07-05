@@ -29,7 +29,7 @@ class Flexibilitye extends StatelessWidget {
                 width: 600,
                 padding: 25,
                 list: [
-                  MyText(text: 'flexibility Exercises', fontsize: 25),
+                  MyText(text: 'Flexibility Exercises', fontsize: 25),
                   // Days(
                   //      selectedCategory: null,
                   //     onChanged: (value) { controller.setSelectedDay(value);}),
