@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
 
-import 'package:adminfitness/catdeits/flexibilityd.dart';
-import 'package:adminfitness/catdeits/musclybuildd.dart';
-import 'package:adminfitness/catdeits/weightlossd.dart';
+import 'package:adminfitness/catdeits/flexibility/flexibilityd.dart';
+import 'package:adminfitness/catdeits/muscly%20building/musclybuildd.dart';
+import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
 import 'package:adminfitness/catexercises/flexibilitye.dart';
 import 'package:adminfitness/catexercises/musclybuilde.dart';
 import 'package:adminfitness/catexercises/weightlosse.dart';

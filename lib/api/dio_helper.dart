@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, dead_code
 
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:dio/dio.dart';
 
 class DioHelper {
@@ -22,6 +24,7 @@ class DioHelper {
             headers: {'Accept': 'application/json'},
             followRedirects: false,
             validateStatus: (status) {
+              return true;
               return status! < 500;
             }));
   }
@@ -37,6 +40,32 @@ class DioHelper {
         validateStatus: (status) {
           return true;
           return status! < 500;
+        },
+      ),
+    );
+  }
+
+   static Future<Response> deits({
+    required String time,
+    required int day_id,
+    required String description,
+    required Uint8List image,
+  }) async {
+    String base64Image = base64Encode(image);
+    
+    return await dio.post(
+      'addrecipe',
+      data: {
+        'time': time,
+        'day_id': day_id,
+        'description': description,
+        'image': base64Image, // Send the image as a base64 string
+      },
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
         },
       ),
     );
