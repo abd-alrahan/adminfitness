@@ -2,8 +2,8 @@
 
 import 'package:adminfitness/catdeits/weightlossd.dart';
 import 'package:adminfitness/catexercises/weightlosse.dart';
-import 'package:adminfitness/cattips/eating.dart';
-import 'package:adminfitness/cattips/sleep.dart';
+import 'package:adminfitness/cattips/eating/eating.dart';
+import 'package:adminfitness/cattips/sleep/sleep.dart';
 import 'package:adminfitness/components/components.dart';
 import 'package:adminfitness/usersinfo/usersinfo.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class Homepage extends StatelessWidget {
                         width: 250,
                         child: Addtips(
                           buttonText: 'Add tips', list: [
-                            Addtips(buttonText: 'Eating',routName: const Eating()),
+                            Addtips(buttonText: 'Eating',routName: Eating()),
                             Addtips(buttonText: 'Sleep',routName: const Sleep()),
                           ],
                         ),

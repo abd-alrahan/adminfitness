@@ -31,7 +31,6 @@ class DioHelper {
     return await dio.post(
       'addadvice',
       queryParameters: {'description': description, 'category_id': category_id},
-      //data: {'description': description, 'category_id': category_id},
       options: Options(
         headers: {'Accept': 'application/json'},
         followRedirects: false,

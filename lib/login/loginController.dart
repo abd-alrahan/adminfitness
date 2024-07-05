@@ -12,7 +12,7 @@ class LoginController extends GetxController {
   final _loginService = LoginService();
 
   void login() async {
-    if (email.value.isNotEmpty && password.value.isNotEmpty) {
+    if (email.isNotEmpty && password.isNotEmpty) {
       isLoading.value = true;
       LogInModel loginModel = LogInModel(email: email.value, password: password.value);
       bool success = await _loginService.login(loginModel);
