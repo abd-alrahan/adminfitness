@@ -31,7 +31,7 @@ class Musclybuilde extends StatelessWidget {
                 list: [
                   MyText(text: 'Muscly building Exercises', fontsize: 25),
                   // Days(
-                      
+
                   //     onChanged: (value) { controller.setSelectedDay(value);}, selectedCategory: null,),
                   const CustomTextFormField(labelText: 'The name of exercise'),
                   const CustomTextFormField(labelText: 'Time of play'),

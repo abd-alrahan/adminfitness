@@ -30,7 +30,9 @@ class Weightlosse extends StatelessWidget {
                 MyText(text: 'Weight Loss Exercises', fontsize: 40),
                 CatExercises(
                     selectedValue: controller.selectedCategory,
-                    onChanged: (value) { controller.setSelectedCategory(value);}),
+                    onChanged: (value) {
+                      controller.setSelectedCategory(value);
+                    }),
                 const CustomTextFormField(labelText: 'The name of exercise'),
                 const CustomTextFormField(labelText: 'Time of play'),
                 const CustomTextFormField(labelText: 'explination'),

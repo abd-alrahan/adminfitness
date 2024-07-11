@@ -38,7 +38,7 @@ class Usersinfo extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(10)),
-                          child:  Stack(
+                          child: Stack(
                             children: [
                               const Center(
                                 child: Column(
@@ -87,7 +87,10 @@ class Usersinfo extends StatelessWidget {
                                   child: MaterialButton(
                                     color: Colors.red,
                                     textColor: Colors.white,
-                                    child: const Text('Remove',style: TextStyle(fontSize: 9.3),),
+                                    child: const Text(
+                                      'Remove',
+                                      style: TextStyle(fontSize: 9.3),
+                                    ),
                                     onPressed: () {},
                                   ),
                                 ),

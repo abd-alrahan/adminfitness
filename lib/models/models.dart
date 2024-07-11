@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-
 import 'dart:typed_data';
 
 class LogInModel {
@@ -45,15 +44,17 @@ class TipsModel {
   }
 }
 
-
-
 class DeitsModel {
   final String time;
   final int day_id;
   final String description;
   final Uint8List image;
 
-  DeitsModel({required this.time, required this.day_id, required this.description, required this.image});
+  DeitsModel(
+      {required this.time,
+      required this.day_id,
+      required this.description,
+      required this.image});
 
   factory DeitsModel.fromJson(Map<String, dynamic> jsondata) {
     return DeitsModel(
@@ -73,7 +74,3 @@ class DeitsModel {
     };
   }
 }
-
-
-
-
