@@ -9,7 +9,7 @@ class WeightlossdController extends GetxController {
   var selectedDay = 0.obs;
 
   void setSelectedDay(int day) {
-    selectedDay.value = day;
+    selectedDay.value = day ;
   }
 }
 
@@ -38,7 +38,7 @@ class Weightlossd extends StatelessWidget {
                       selectedValue: controller.selectedDay,
                       onChanged: (value) {
                         controller.setSelectedDay(value);
-                        dietsController.dayId = value;
+                        dietsController.dayId = value ;
                         print(dietsController.dayId);
                       }),
                   CustomTextFormField(

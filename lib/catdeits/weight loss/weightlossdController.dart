@@ -44,7 +44,7 @@ class DietsController extends GetxController {
         description: description.value,
         image: imagePath.value!, // Pass the Uint8List to the model
       );
-       print('in secreen_________________________________-');
+       print('in secreen___________________________________');
       bool success = await _addDeitsService.deits(deitsModel);
       isLoading.value = false;
       print(success);

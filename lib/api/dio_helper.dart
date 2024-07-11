@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, dead_code
+// ignore_for_file: non_constant_identifier_names, dead_code, avoid_print
 
 import 'dart:convert';
 import 'dart:typed_data';
