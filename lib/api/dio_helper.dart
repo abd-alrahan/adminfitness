@@ -100,4 +100,19 @@ class DioHelper {
       ),
     );
   }
+
+  static Future<Response> deleteuser(int id) async {
+    return await dio.delete(
+      'deleteuser',
+      queryParameters: {'id': id},
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
+  }
 }
