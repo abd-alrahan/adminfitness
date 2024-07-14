@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, dead_code, avoid_print
+// ignore_for_file: non_constant_identifier_names, dead_code, avoid_print, deprecated_member_use
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -67,6 +67,35 @@ class DioHelper {
         validateStatus: (status) {
           print('the status is $status');
           return true;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> userdetal(int id) async {
+    return await dio.get(
+      'userdetal',
+      queryParameters: {'id': id},
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> numuser() async {
+    return await dio.get(
+      'numuser',
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
         },
       ),
     );
