@@ -14,8 +14,7 @@ class LoginController extends GetxController {
   void login() async {
     if (email.isNotEmpty && password.isNotEmpty) {
       isLoading.value = true;
-      LogInModel loginModel =
-          LogInModel(email: email.value, password: password.value);
+      LogInModel loginModel = LogInModel(email: email.value, password: password.value);
       bool success = await _loginService.login(loginModel);
       isLoading.value = false;
       if (success) {

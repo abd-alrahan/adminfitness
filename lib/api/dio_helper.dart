@@ -102,7 +102,7 @@ class DioHelper {
   }
 
   static Future<Response> deleteuser(int id) async {
-    return await dio.delete(
+    return await dio.post(
       'deleteuser',
       queryParameters: {'id': id},
       options: Options(

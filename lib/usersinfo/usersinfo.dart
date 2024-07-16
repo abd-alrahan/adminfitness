@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:adminfitness/models/models.dart';
+import 'package:adminfitness/usersinfo/deleteuserController.dart';
 import 'package:adminfitness/usersinfo/numuserController.dart';
 import 'package:adminfitness/usersinfo/usersinfoController.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,8 @@ class Usersinfo extends StatelessWidget {
 
   final UserinfoController usersController = Get.put(UserinfoController());
   final NumuserController numuserController = Get.put(NumuserController());
+  final DeleteuserController deleteuserController =
+      Get.put(DeleteuserController());
 
   @override
   Widget build(BuildContext context) {
@@ -122,17 +127,29 @@ class Usersinfo extends StatelessWidget {
                                     child: SizedBox(
                                       height: 25,
                                       width: 50,
-                                      child: MaterialButton(
-                                        color: Colors.red,
-                                        textColor: Colors.white,
-                                        child: const Text(
-                                          'Remove',
-                                          style: TextStyle(fontSize: 9.3),
-                                        ),
-                                        onPressed: () {
-                                          // Implement the remove functionality here
-                                        },
-                                      ),
+                                      child: Obx(() {
+                                        return deleteuserController
+                                                    .loadingUsers[user.id] == true
+                                            ? const Center(
+                                                child: SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: CircularProgressIndicator()))
+                                            : MaterialButton(
+                                                color: Colors.red,
+                                                textColor: Colors.white,
+                                                child: const Text(
+                                                  'Remove',
+                                                  style:
+                                                      TextStyle(fontSize: 9.3),
+                                                ),
+                                                onPressed: () async {
+                                              await deleteuserController.deleteUser(user.id);
+                                              usersController.users.removeAt(index);
+                                              numuserController.userCount.value--;
+                                                },
+                                              );
+                                      }),
                                     ),
                                   ),
                                 ],
