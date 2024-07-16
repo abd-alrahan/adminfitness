@@ -134,7 +134,7 @@ class Usersinfo extends StatelessWidget {
                                                 child: SizedBox(
                                                   width: 20,
                                                   height: 20,
-                                                  child: CircularProgressIndicator()))
+                                                  child: CircularProgressIndicator(strokeWidth: 2.0)))
                                             : MaterialButton(
                                                 color: Colors.red,
                                                 textColor: Colors.white,
