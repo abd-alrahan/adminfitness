@@ -9,8 +9,8 @@ class NumuserService {
     try {
       var response = await DioHelper.numuser();
       if (response.statusCode == 200 && response.data != null) {
-        print(' IN CONTROLLER TE COUNT IS');
-        print(response.data);
+        // print(' IN SERVICE TE COUNT IS');
+        // print(response.data);
         NumuserModel numuser = NumuserModel.fromJson(response.data);
         return numuser.count;
       } else {

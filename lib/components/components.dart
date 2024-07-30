@@ -148,7 +148,7 @@ class Addtips extends StatelessWidget {
                 );
               });
         } else {
-          Get.to(routName);
+          Get.toNamed(routName);
         }
       },
     );

@@ -10,9 +10,9 @@ class UserdetalService {
       var response = await DioHelper.userdetal(id);
 
       if (response.statusCode == 200 && response.data['data'].isNotEmpty) {
-        print('IN SERVICE________');
-        print(response.statusCode);
-        print(response.data);
+        // print('IN SERVICE________');
+        // print(response.statusCode);
+        // print(response.data);
         List<dynamic> data = response.data['data'];
         List<UserModel> users =
             data.map((userJson) => UserModel.fromJson(userJson)).toList();

@@ -1,6 +1,5 @@
 import 'package:adminfitness/catdeits/flexibility/flexibilityd.dart';
 import 'package:adminfitness/catdeits/muscly%20building/musclybuildd.dart';
-import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
 import 'package:adminfitness/catexercises/flexibilitye.dart';
 import 'package:adminfitness/catexercises/musclybuilde.dart';
 import 'package:adminfitness/catexercises/weightlosse.dart';
@@ -88,7 +87,7 @@ class Homepage extends StatelessWidget {
                     list: [
                       Addtips(
                         buttonText: 'Weight Loss Deit',
-                        routName: Weightlossd(),
+                        routName: '/weightlossdiet',
                       ),
                       Addtips(
                         buttonText: 'Muscly Building Deit',

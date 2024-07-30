@@ -18,7 +18,7 @@ class UserinfoController extends GetxController {
 
   void fetchAllUsers() async {
     try {
-      print('IN CONTROLLER ______________________');
+    //  print('IN CONTROLLER ______________________');
       isLoading(true);
       for (int i = 1; i <= 50; i++) {
         var fetchedUsers = await UserdetalService.fetchUsers(i);
@@ -26,7 +26,7 @@ class UserinfoController extends GetxController {
           users.addAll(fetchedUsers);
         }
       }
-      print(users.length);
+      // print(users.length);
     } catch (e) {
       errorMessage(e.toString());
     } finally {

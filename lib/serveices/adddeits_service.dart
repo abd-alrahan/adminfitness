@@ -12,11 +12,10 @@ class AddDeitsService {
         description: deitsModel.description,
         image: deitsModel.image,
       );
-      print('nooo_______________________________');
+      print('IN SERVICE_______________');
       print(deitsModel.time);
       print(deitsModel.day_id);
       print(deitsModel.description);
-      //print(deitsModel.image);
       print(response.statusCode);
       if (response.statusCode == 200) {
         return true;
@@ -29,3 +28,4 @@ class AddDeitsService {
     }
   }
 }
+

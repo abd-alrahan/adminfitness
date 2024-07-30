@@ -1,6 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_web_libraries_in_flutter
 
-import 'dart:typed_data';
+import 'dart:html' as html;
 
 class LogInModel {
   final String email;
@@ -48,20 +48,21 @@ class DeitsModel {
   final String time;
   final int day_id;
   final String description;
-  final Uint8List image;
+  final html.File image;
 
-  DeitsModel(
-      {required this.time,
-      required this.day_id,
-      required this.description,
-      required this.image});
+  DeitsModel({
+    required this.time,
+    required this.day_id,
+    required this.description,
+    required this.image,
+  });
 
   factory DeitsModel.fromJson(Map<String, dynamic> jsondata) {
     return DeitsModel(
       time: jsondata['time'],
       day_id: jsondata['day_id'],
       description: jsondata['description'],
-      image: jsondata['image'], // Ensure your backend can handle this
+      image: jsondata['image'], // This might need to be adapted
     );
   }
 
@@ -70,10 +71,11 @@ class DeitsModel {
       'time': time,
       'day_id': day_id,
       'description': description,
-      'image': image, // Ensure your backend can handle this
+      'image': image, // This might need to be adapted
     };
   }
 }
+
 
 class UserModel {
   final int id;

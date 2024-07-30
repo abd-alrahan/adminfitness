@@ -1,4 +1,5 @@
 import 'package:adminfitness/api/dio_helper.dart';
+import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
 import 'package:adminfitness/homepage/homepage.dart';
 import 'package:adminfitness/login/login.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,11 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/weightlossdiet',
       getPages: [
         GetPage(name: '/', page: () => LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
+        GetPage(name: '/weightlossdiet', page: () => Weightlossd() ),
       ],
     );
   }
