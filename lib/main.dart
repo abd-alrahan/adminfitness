@@ -1,7 +1,15 @@
 import 'package:adminfitness/api/dio_helper.dart';
+import 'package:adminfitness/catdeits/flexibility/flexibilityd.dart';
+import 'package:adminfitness/catdeits/muscly%20building/musclybuildd.dart';
 import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
+import 'package:adminfitness/catexercises/flexibilitye.dart';
+import 'package:adminfitness/catexercises/musclybuilde.dart';
+import 'package:adminfitness/catexercises/weightlosse.dart';
+import 'package:adminfitness/cattips/eating/eating.dart';
+import 'package:adminfitness/cattips/sleep/sleep.dart';
 import 'package:adminfitness/homepage/homepage.dart';
 import 'package:adminfitness/login/login.dart';
+import 'package:adminfitness/usersinfo/usersinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,11 +25,19 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/weightlossdiet',
+      initialRoute: '/weightlossd',
       getPages: [
         GetPage(name: '/', page: () => LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
-        GetPage(name: '/weightlossdiet', page: () => Weightlossd() ),
+        GetPage(name: '/weightlossd', page: () => Weightlossd()),
+        GetPage(name: '/musclybuildd', page: () => Musclybuildd()),
+        GetPage(name: '/flexibilityd', page: () => Flexibilityd()),
+        GetPage(name: '/weightlosse', page: () => Weightlosse()),
+        GetPage(name: '/musclybuilde', page: () => Musclybuilde()),
+        GetPage(name: '/flexibilitye', page: () => Flexibilitye()),
+        GetPage(name: '/eating', page: () => Eating()),
+        GetPage(name: '/sleep', page: () => Sleep()),
+        GetPage(name: '/usersinfo', page: () => Usersinfo()),
       ],
     );
   }

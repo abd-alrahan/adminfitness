@@ -1,13 +1,5 @@
-import 'package:adminfitness/catdeits/flexibility/flexibilityd.dart';
-import 'package:adminfitness/catdeits/muscly%20building/musclybuildd.dart';
-import 'package:adminfitness/catexercises/flexibilitye.dart';
-import 'package:adminfitness/catexercises/musclybuilde.dart';
-import 'package:adminfitness/catexercises/weightlosse.dart';
-import 'package:adminfitness/cattips/eating/eating.dart';
-import 'package:adminfitness/cattips/sleep/sleep.dart';
 import 'package:adminfitness/components/components.dart';
 import 'package:adminfitness/usersinfo/numuserController.dart';
-import 'package:adminfitness/usersinfo/usersinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -66,15 +58,15 @@ class Homepage extends StatelessWidget {
                     list: [
                       Addtips(
                         buttonText: 'Weight Loss Exercise',
-                        routName: Weightlosse(),
+                        routName: '/weightlosse',
                       ),
                       Addtips(
                         buttonText: 'Muscly Building Exercise',
-                        routName: Musclybuilde(),
+                        routName: '/musclybuilde',
                       ),
                       Addtips(
                         buttonText: 'Flexibility Exercise',
-                        routName: Flexibilitye(),
+                        routName: '/flexibilitye',
                       ),
                     ],
                   ),
@@ -87,15 +79,15 @@ class Homepage extends StatelessWidget {
                     list: [
                       Addtips(
                         buttonText: 'Weight Loss Deit',
-                        routName: '/weightlossdiet',
+                        routName: '/weightlossd',
                       ),
                       Addtips(
                         buttonText: 'Muscly Building Deit',
-                        routName: Musclybuildd(),
+                        routName: '/musclybuildd',
                       ),
                       Addtips(
                         buttonText: 'Flexibility Deit',
-                        routName: Flexibilityd(),
+                        routName: '/flexibilityd',
                       ),
                     ],
                   ),
@@ -106,8 +98,8 @@ class Homepage extends StatelessWidget {
                   child: Addtips(
                     buttonText: 'Add tips',
                     list: [
-                      Addtips(buttonText: 'Eating', routName: Eating()),
-                      Addtips(buttonText: 'Sleep', routName: Sleep()),
+                      Addtips(buttonText: 'Eating', routName: '/eating'),
+                      Addtips(buttonText: 'Sleep', routName: '/sleep'),
                     ],
                   ),
                 ),
@@ -159,7 +151,7 @@ class Homepage extends StatelessWidget {
                           width: 325,
                           child: Addtips(
                             buttonText: '${numuserController.userCount.value} USERS',
-                            routName: Usersinfo(),
+                            routName: '/usersinfo',
                           ),
                         );
                       }

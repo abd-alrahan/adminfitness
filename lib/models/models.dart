@@ -57,24 +57,16 @@ class DeitsModel {
     required this.image,
   });
 
-  factory DeitsModel.fromJson(Map<String, dynamic> jsondata) {
-    return DeitsModel(
-      time: jsondata['time'],
-      day_id: jsondata['day_id'],
-      description: jsondata['description'],
-      image: jsondata['image'], // This might need to be adapted
-    );
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'time': time,
       'day_id': day_id,
       'description': description,
-      'image': image, // This might need to be adapted
+      // Image is not included here as it's a file
     };
   }
 }
+
 
 
 class UserModel {

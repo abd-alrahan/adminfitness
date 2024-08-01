@@ -139,7 +139,7 @@ class Addtips extends StatelessWidget {
                                       color:
                                           Color.fromARGB(255, 161, 153, 153))),
                               onPressed: () {
-                                Get.to(routName2);
+                                Get.toNamed(routName2);
                               },
                             );
                           }),
