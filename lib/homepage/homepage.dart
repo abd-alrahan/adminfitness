@@ -26,7 +26,8 @@ class Homepage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     LottiPreviewer(),
-                    SizedBox(height: 60), // Adjust spacing between Lottie animations
+                    SizedBox(
+                        height: 60), // Adjust spacing between Lottie animations
                     LottiPreviewer(),
                   ],
                 ),
@@ -35,7 +36,8 @@ class Homepage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     LottiPreviewer(),
-                    SizedBox(height: 60), // Adjust spacing between Lottie animations
+                    SizedBox(
+                        height: 60), // Adjust spacing between Lottie animations
                     LottiPreviewer(),
                   ],
                 ),
@@ -145,12 +147,14 @@ class Homepage extends StatelessWidget {
                       if (numuserController.isLoading.value) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (numuserController.errorMessage.isNotEmpty) {
-                        return Center(child: Text(numuserController.errorMessage.value));
+                        return Center(
+                            child: Text(numuserController.errorMessage.value));
                       } else {
                         return SizedBox(
                           width: 325,
                           child: Addtips(
-                            buttonText: '${numuserController.userCount.value} USERS',
+                            buttonText:
+                                '${numuserController.userCount.value} USERS',
                             routName: '/usersinfo',
                           ),
                         );

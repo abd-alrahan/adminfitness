@@ -2,7 +2,6 @@
 
 import 'package:adminfitness/models/models.dart';
 import 'package:adminfitness/serveices/userdetal_service.dart';
-
 import 'package:get/get.dart';
 
 class UserinfoController extends GetxController {
@@ -18,7 +17,7 @@ class UserinfoController extends GetxController {
 
   void fetchAllUsers() async {
     try {
-    //  print('IN CONTROLLER ______________________');
+      //  print('IN CONTROLLER ______________________');
       isLoading(true);
       for (int i = 1; i <= 50; i++) {
         var fetchedUsers = await UserdetalService.fetchUsers(i);

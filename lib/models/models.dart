@@ -26,21 +26,20 @@ class LogInModel {
 class TipsModel {
   final String description;
   final int category_id;
+  final int? id;
 
-  TipsModel({required this.description, required this.category_id});
+  TipsModel({required this.description, required this.category_id, this.id});
 
   factory TipsModel.fromJson(Map<String, dynamic> jsondata) {
     return TipsModel(
       description: jsondata['description'],
       category_id: jsondata['category_id'],
+      id: jsondata['id'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'description': description,
-      'category_id': category_id,
-    };
+    return {'description': description, 'category_id': category_id, 'id': id};
   }
 }
 
@@ -66,8 +65,6 @@ class DeitsModel {
     };
   }
 }
-
-
 
 class UserModel {
   final int id;

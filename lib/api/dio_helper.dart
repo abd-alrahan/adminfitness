@@ -45,57 +45,86 @@ class DioHelper {
     );
   }
 
-static Future<Response> deits({
-  required String time,
-  required int day_id,
-  required String description,
-  required html.File image,
-}) async {
-  final formData = FormData();
-
-  formData.fields
-    ..add(MapEntry('time', time))
-    ..add(MapEntry('day_id', day_id.toString()))
-    ..add(MapEntry('description', description));
-
-  final reader = html.FileReader();
-  reader.readAsArrayBuffer(image);
-  await reader.onLoadEnd.first;
-
-  if (reader.result == null) {
-    throw Exception("File reading failed, result is null");
-  }
-
-  final fileBytes = (reader.result as Uint8List).toList();
-
-  formData.files.add(MapEntry(
-    'image',
-    MultipartFile.fromBytes(
-      fileBytes,
-      filename: image.name,
-    ),
-  ));
-
-  try {
-    final response = await dio.post(
-      'addrecipe',
-      data: formData,
+  static Future<Response> showtips(int category_id) async {
+    return await dio.get(
+      'showadvice',
+      queryParameters: {'category_id': category_id},
       options: Options(
-        headers: {
-          'Accept': 'application/json',
-        },
+        headers: {'Accept': 'application/json'},
         followRedirects: false,
         validateStatus: (status) {
+          return true;
           return status! < 500;
         },
       ),
     );
-    return response;
-  } catch (e) {
-    rethrow;
   }
-}
 
+  static Future<Response> deletetip(int id) async {
+    return await dio.post(
+      'deleteadvice',
+      queryParameters: {'id': id},
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> deits({
+    required String time,
+    required int day_id,
+    required String description,
+    required html.File image,
+  }) async {
+    final formData = FormData();
+
+    formData.fields
+      ..add(MapEntry('time', time))
+      ..add(MapEntry('day_id', day_id.toString()))
+      ..add(MapEntry('description', description));
+
+    final reader = html.FileReader();
+    reader.readAsArrayBuffer(image);
+    await reader.onLoadEnd.first;
+
+    if (reader.result == null) {
+      throw Exception("File reading failed, result is null");
+    }
+
+    final fileBytes = (reader.result as Uint8List).toList();
+
+    formData.files.add(MapEntry(
+      'image',
+      MultipartFile.fromBytes(
+        fileBytes,
+        filename: image.name,
+      ),
+    ));
+
+    try {
+      final response = await dio.post(
+        'addrecipe',
+        data: formData,
+        options: Options(
+          headers: {
+            'Accept': 'application/json',
+          },
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 500;
+          },
+        ),
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   static Future<Response> userdetal(int id) async {
     return await dio.get(

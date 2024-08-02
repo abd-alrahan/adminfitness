@@ -6,6 +6,8 @@ import 'package:adminfitness/catexercises/flexibilitye.dart';
 import 'package:adminfitness/catexercises/musclybuilde.dart';
 import 'package:adminfitness/catexercises/weightlosse.dart';
 import 'package:adminfitness/cattips/eating/eating.dart';
+import 'package:adminfitness/cattips/eating/show_eating/show_eating.dart';
+import 'package:adminfitness/cattips/sleep/show_sleep/show_sleep.dart';
 import 'package:adminfitness/cattips/sleep/sleep.dart';
 import 'package:adminfitness/homepage/homepage.dart';
 import 'package:adminfitness/login/login.dart';
@@ -25,7 +27,7 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/weightlossd',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
@@ -38,6 +40,8 @@ class Admin extends StatelessWidget {
         GetPage(name: '/eating', page: () => Eating()),
         GetPage(name: '/sleep', page: () => Sleep()),
         GetPage(name: '/usersinfo', page: () => Usersinfo()),
+        GetPage(name: '/showeating', page: () => const ShowEating()),
+        GetPage(name: '/showsleep', page: () => const ShowSleep()),
       ],
     );
   }

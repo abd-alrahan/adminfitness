@@ -22,7 +22,7 @@ class Eating extends StatelessWidget {
                 width: 600,
                 padding: 25,
                 list: [
-                  MyText(text: 'Eating Tips', fontsize: 40),
+                  MyText(text: 'Eating', fontsize: 40),
                   MyText(
                     text:
                         'Make your tips effective, the more healthy they are the better! Follow these eating tips!!',
@@ -58,6 +58,12 @@ class Eating extends StatelessWidget {
                             ),
                           );
                   }),
+                  SizedBox(
+                      width: 225,
+                      child: Addtips(
+                        buttonText: 'show tips',
+                        routName: '/showeating',
+                      ))
                 ],
               ),
             ),

@@ -22,7 +22,7 @@ class Sleep extends StatelessWidget {
                 width: 600,
                 padding: 25,
                 list: [
-                  MyText(text: 'sleep tips', fontsize: 40),
+                  MyText(text: 'Sleep', fontsize: 40),
                   MyText(
                       text:
                           'make your tips comfortable, the best way to get healthy the perfect sleep tips!!',
@@ -56,6 +56,12 @@ class Sleep extends StatelessWidget {
                             ),
                           );
                   }),
+                  SizedBox(
+                      width: 225,
+                      child: Addtips(
+                        buttonText: 'show tips',
+                        routName: '/showsleep',
+                      ))
                 ],
               ),
             ),
