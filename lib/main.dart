@@ -28,7 +28,7 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LogIn()),
         GetPage(name: '/home', page: () => const Homepage()),
