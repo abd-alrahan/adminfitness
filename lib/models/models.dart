@@ -48,13 +48,12 @@ class DeitsModel {
   final dynamic image;
   final int? id;
 
-  DeitsModel({
-    required this.time,
-    required this.day_id,
-    required this.description,
-    required this.image,
-    this.id
-  });
+  DeitsModel(
+      {required this.time,
+      required this.day_id,
+      required this.description,
+      required this.image,
+      this.id});
 
   Map<String, dynamic> toJson() {
     return {
@@ -68,37 +67,91 @@ class DeitsModel {
 
   factory DeitsModel.fromJson(Map<String, dynamic> json) {
     return DeitsModel(
-      time: json['time'],
-      day_id: json['day_id'],
-      description: json['description'],
-      image: json['image'],
-      id: json['id']
-    );
+        time: json['time'],
+        day_id: json['day_id'],
+        description: json['description'],
+        image: json['image'],
+        id: json['id']);
   }
 }
 
-// class AddDeitsModel {
-//   final String time;
-//   final int day_id;
-//   final String description;
-//   final dynamic image;
+class ExerciseModel {
+  final String name;
+  final int time;
+  final String description;
+  final dynamic json;
+  final int? exerciseId;
 
-//   AddDeitsModel({
-//     required this.time,
-//     required this.day_id,
-//     required this.description,
-//     required this.image,
-//   });
+  ExerciseModel(
+      {required this.time,
+      required this.name,
+      required this.description,
+      required this.json,
+      this.exerciseId});
 
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'time': time,
-//       'day_id': day_id,
-//       'description': description,
-//       'image': image
-//     };
-//   }
-// }
+  Map<String, dynamic> toJson() {
+    return {
+      'time': time,
+      'name': name,
+      'description': description,
+      'json': json,
+      'exerciseId': exerciseId
+    };
+  }
+
+  factory ExerciseModel.fromJson(Map<String, dynamic> json) {
+    return ExerciseModel(
+        time: json['time'],
+        name: json['name'],
+        description: json['description'],
+        json: json['json'],
+        exerciseId: json['exerciseId']);
+  }
+}
+
+class CategoryExerciseModel {
+  final int exerciseId;
+  final int categoryId;
+
+  CategoryExerciseModel(
+      {required this.exerciseId,
+      required this.categoryId,});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'exerciseId': exerciseId,
+      'categoryId': categoryId,
+    };
+  }
+
+  factory CategoryExerciseModel.fromJson(Map<String, dynamic> json) {
+    return CategoryExerciseModel(
+        exerciseId: json['exerciseId'],
+        categoryId: json['categoryId'],);
+  }
+}
+
+class DayExerciseModel {
+  final int exerciseId;
+  final int dayId;
+
+  DayExerciseModel(
+      {required this.exerciseId,
+      required this.dayId,});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'exerciseId': exerciseId,
+      'dayId': dayId,
+    };
+  }
+
+  factory DayExerciseModel.fromJson(Map<String, dynamic> json) {
+    return DayExerciseModel(
+        exerciseId: json['exerciseId'],
+        dayId: json['dayId'],);
+  }
+}
 
 class UserModel {
   final int id;

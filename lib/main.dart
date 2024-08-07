@@ -5,9 +5,7 @@ import 'package:adminfitness/catdeits/muscly%20building/musclybuildd.dart';
 import 'package:adminfitness/catdeits/muscly%20building/show_musclybuildd.dart';
 import 'package:adminfitness/catdeits/weight%20loss/show_weightloss/show_weightlossd.dart';
 import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
-import 'package:adminfitness/catexercises/flexibilitye.dart';
-import 'package:adminfitness/catexercises/musclybuilde.dart';
-import 'package:adminfitness/catexercises/weightlosse.dart';
+import 'package:adminfitness/catexercises/addexercise.dart';
 import 'package:adminfitness/cattips/eating/eating.dart';
 import 'package:adminfitness/cattips/eating/show_eating/show_eating.dart';
 import 'package:adminfitness/cattips/sleep/show_sleep/show_sleep.dart';
@@ -37,9 +35,7 @@ class Admin extends StatelessWidget {
         GetPage(name: '/weightlossd', page: () => Weightlossd()),
         GetPage(name: '/musclybuildd', page: () => Musclybuildd()),
         GetPage(name: '/flexibilityd', page: () => Flexibilityd()),
-        GetPage(name: '/weightlosse', page: () => Weightlosse()),
-        GetPage(name: '/musclybuilde', page: () => Musclybuilde()),
-        GetPage(name: '/flexibilitye', page: () => Flexibilitye()),
+        GetPage(name: '/addexercise', page: () => AddExercise()),
         GetPage(name: '/eating', page: () => Eating()),
         GetPage(name: '/sleep', page: () => Sleep()),
         GetPage(name: '/usersinfo', page: () => Usersinfo()),

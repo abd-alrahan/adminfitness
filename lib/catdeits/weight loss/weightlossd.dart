@@ -16,7 +16,7 @@ class DayController extends GetxController {
 class Weightlossd extends StatelessWidget {
   Weightlossd({super.key});
 
-  final DayController controller = Get.put(DayController());
+  final DayController daycontroller = Get.put(DayController());
   final AddDietsController addDietsController = Get.put(AddDietsController());
 
   @override
@@ -33,9 +33,9 @@ class Weightlossd extends StatelessWidget {
               list: [
                 MyText(text: 'Weight Loss Diets', fontsize: 40),
                 CatExercises(
-                    selectedValue: controller.selectedDay,
+                    selectedValue: daycontroller.selectedDay,
                     onChanged: (value) {
-                      controller.setSelectedDay(value);
+                      daycontroller.setSelectedDay(value);
                       addDietsController.dayId = value;
                       print(addDietsController.dayId);
                     }),

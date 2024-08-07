@@ -150,7 +150,7 @@ class DioHelper {
     }
   }
 
-    static Future<Response> delete_deits({required int dayId , required int id}) async {
+  static Future<Response> delete_deits({required int dayId , required int id}) async {
     try {
       Response response = await dio.post(
         'deleterecipe',
@@ -170,7 +170,92 @@ class DioHelper {
     }
   }
 
+  static Future<Response> add_exercise({
+    required String name,
+    required int time,
+    required String description,
+    required dynamic json,
+  }) async {
+    try {
+      MultipartFile multipartFile;
 
+      if (json is File) {
+        multipartFile = await MultipartFile.fromFile(json.path,
+            filename: json.path.split('/').last);
+      } else if (json is Uint8List) {
+        multipartFile =
+            MultipartFile.fromBytes(json, filename: 'upload_json.jpg');
+      } else {
+        throw Exception('Invalid image type');
+      }
+
+      // Create form data
+      FormData formData = FormData.fromMap({
+        'name': name,
+        'time': time,
+        'description': description,
+        'json': multipartFile,
+      });
+
+      print('Form Data: ${formData.fields}, ${formData.files}');
+
+      // Send the POST request
+      Response response = await dio.post(
+        'add_exe', // Replace with your actual backend URL
+        data: formData,
+        options: Options(
+          headers: {'Accept': 'application/json'},
+          followRedirects: true,
+          validateStatus: (status) {
+            print('The status is $status');
+            return status! < 500;
+          },
+        ),
+      );
+
+      print('Response: ${response.data}');
+      return response;
+    } catch (e) {
+      if (e is DioException) {
+        print('DioException: ${e.response?.data}');
+      } else {
+        print('Error uploading image: $e');
+      }
+      rethrow;
+    }
+  }
+
+  static Future<Response> assign_categoryExercise(
+      {required int exerciseId, required int categoryId}) async {
+    return await dio.post(
+      'join1',
+      queryParameters: {'id_exercise': exerciseId, 'id_cat': categoryId},
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> assign_dayExercise(
+      {required int exerciseId, required int dayId}) async {
+    return await dio.post(
+      'join2',
+      queryParameters: {'id_exercise': exerciseId, 'id_day': dayId},
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+          return status! < 500;
+        },
+      ),
+    );
+  }
 
   static Future<Response> userdetal(int id) async {
     return await dio.get(

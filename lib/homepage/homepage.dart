@@ -57,20 +57,7 @@ class Homepage extends StatelessWidget {
                   width: 250,
                   child: Addtips(
                     buttonText: 'Add exercises',
-                    list: [
-                      Addtips(
-                        buttonText: 'Weight Loss Exercise',
-                        routName: '/weightlosse',
-                      ),
-                      Addtips(
-                        buttonText: 'Muscly Building Exercise',
-                        routName: '/musclybuilde',
-                      ),
-                      Addtips(
-                        buttonText: 'Flexibility Exercise',
-                        routName: '/flexibilitye',
-                      ),
-                    ],
+                    routName: '/addexercise',
                   ),
                 ),
                 SizedBox(
