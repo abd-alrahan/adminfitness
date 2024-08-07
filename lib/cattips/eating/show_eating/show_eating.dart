@@ -14,15 +14,22 @@ class ShowEating extends StatelessWidget {
     final DeleteTipController deleteTipController =
         Get.put(DeleteTipController());
 
-    // Fetch the tips when the widget is initialized
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showeatingController.fetchTips(showeatingController.categoryId);
-    });
+    showeatingController.fetchTips(showeatingController.categoryId);
+    // // Fetch the tips when the widget is initialized
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   showeatingController.fetchTips(showeatingController.categoryId);
+    // });
 
     return Scaffold(
       body: Stack(
         children: [
           BackgroundImage(image: 'assets/images/homepage.jpeg'),
+          Align(alignment: Alignment.bottomRight,
+          child: SizedBox(
+            width: 225,
+            child: Addtips(buttonText: 'Go to Home Page',routName: '/home'),
+          ),
+          ),
           Center(
             child: BlurContainer(
               height: 600,

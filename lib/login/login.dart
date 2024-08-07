@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LogIn extends StatelessWidget {
-  LogIn({Key? key}) : super(key: key);
+  LogIn({super.key});
 
   final LoginController _loginController = Get.put(LoginController());
   final _formKey = GlobalKey<FormState>();

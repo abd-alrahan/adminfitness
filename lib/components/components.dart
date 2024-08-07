@@ -1,6 +1,10 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
 
 import 'dart:ui';
+import 'package:adminfitness/catdeits/weight%20loss/showDietsController.dart';
+import 'package:adminfitness/catdeits/weight%20loss/weightlossd.dart';
+import 'package:adminfitness/cattips/eating/show_eating/show_eatingController.dart';
+import 'package:adminfitness/cattips/sleep/show_sleep/show_sleepController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -26,12 +30,12 @@ class BlurContainer extends StatelessWidget {
   final List<Widget>? list;
 
   const BlurContainer({
-    Key? key,
+    super.key,
     required this.height,
     required this.width,
     this.padding,
     this.list,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +154,10 @@ class Addtips extends StatelessWidget {
         } else {
           Get.toNamed(routName);
         }
+        Get.delete<ShowDietsController>();
+        Get.delete<DayController>();
+        Get.delete<ShowEatingController>();
+        Get.delete<ShowSleepController>();
       },
     );
   }
@@ -164,15 +172,14 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final Function(String)? onChanged;
   const CustomTextFormField(
-      {Key? key,
+      {super.key,
       required this.labelText,
       this.prefixIcon,
       this.validator,
       this.onSaved,
       this.obscureText = false,
       TextEditingController? controller,
-      this.onChanged})
-      : super(key: key);
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {

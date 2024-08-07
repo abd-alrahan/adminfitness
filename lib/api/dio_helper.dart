@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, dead_code, avoid_print, deprecated_member_use, avoid_web_libraries_in_flutter
 
-import 'dart:html' as html;
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
 
@@ -75,56 +75,102 @@ class DioHelper {
     );
   }
 
-  static Future<Response> deits({
+  static Future<Response> add_deits({
     required String time,
     required int day_id,
     required String description,
-    required html.File image,
+    required dynamic image,
   }) async {
-    final formData = FormData();
-
-    formData.fields
-      ..add(MapEntry('time', time))
-      ..add(MapEntry('day_id', day_id.toString()))
-      ..add(MapEntry('description', description));
-
-    final reader = html.FileReader();
-    reader.readAsArrayBuffer(image);
-    await reader.onLoadEnd.first;
-
-    if (reader.result == null) {
-      throw Exception("File reading failed, result is null");
-    }
-
-    final fileBytes = (reader.result as Uint8List).toList();
-
-    formData.files.add(MapEntry(
-      'image',
-      MultipartFile.fromBytes(
-        fileBytes,
-        filename: image.name,
-      ),
-    ));
-
     try {
-      final response = await dio.post(
-        'addrecipe',
+      MultipartFile multipartFile;
+
+      if (image is File) {
+        multipartFile = await MultipartFile.fromFile(image.path,
+            filename: image.path.split('/').last);
+      } else if (image is Uint8List) {
+        multipartFile =
+            MultipartFile.fromBytes(image, filename: 'upload_image.jpg');
+      } else {
+        throw Exception('Invalid image type');
+      }
+
+      // Create form data
+      FormData formData = FormData.fromMap({
+        'time': time,
+        'day_id': day_id,
+        'description': description,
+        'image': multipartFile,
+      });
+
+      print('Form Data: ${formData.fields}, ${formData.files}');
+
+      // Send the POST request
+      Response response = await dio.post(
+        'addrecipe', // Replace with your actual backend URL
         data: formData,
         options: Options(
-          headers: {
-            'Accept': 'application/json',
-          },
-          followRedirects: false,
+          headers: {'Accept': 'application/json'},
+          followRedirects: true,
           validateStatus: (status) {
+            print('The status is $status');
             return status! < 500;
           },
         ),
       );
+
+      print('Response: ${response.data}');
       return response;
     } catch (e) {
+      if (e is DioException) {
+        print('DioException: ${e.response?.data}');
+      } else {
+        print('Error uploading image: $e');
+      }
       rethrow;
     }
   }
+
+  static Future<Response> show_deits({required int dayId}) async {
+    try {
+      Response response = await dio.get(
+        'showrecipe',
+        queryParameters: {'day_id': dayId},
+        options: Options(
+          headers: {'Accept': 'application/json'},
+        ),
+      );
+      return response;
+    } catch (e) {
+      if (e is DioException) {
+        print('DioException: ${e.response?.data}');
+      } else {
+        print('Error fetching diets: $e');
+      }
+      rethrow;
+    }
+  }
+
+    static Future<Response> delete_deits({required int dayId , required int id}) async {
+    try {
+      Response response = await dio.post(
+        'deleterecipe',
+        queryParameters: {'day_id': dayId , 'id': id},
+        options: Options(
+          headers: {'Accept': 'application/json'},
+        ),
+      );
+      return response;
+    } catch (e) {
+      if (e is DioException) {
+        print('DioException: ${e.response?.data}');
+      } else {
+        print('Error fetching diets: $e');
+      }
+      rethrow;
+    }
+  }
+
+
 
   static Future<Response> userdetal(int id) async {
     return await dio.get(

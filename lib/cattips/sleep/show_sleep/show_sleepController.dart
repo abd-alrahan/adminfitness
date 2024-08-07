@@ -15,7 +15,7 @@ class ShowSleepController extends GetxController {
 
   Future<void> fetchTips(int categoryId) async {
     try {
-      print('IN eating CONTROLLER__________');
+      print('IN SLEEP CONTROLLER__________');
       isLoading(true);
       errorMessage('');
       var tips = await _showtipsService.fetchTips(categoryId);

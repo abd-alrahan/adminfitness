@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, avoid_web_libraries_in_flutter
 
-import 'dart:html' as html;
-
 class LogInModel {
   final String email;
   final String password;
@@ -47,13 +45,15 @@ class DeitsModel {
   final String time;
   final int day_id;
   final String description;
-  final html.File image;
+  final dynamic image;
+  final int? id;
 
   DeitsModel({
     required this.time,
     required this.day_id,
     required this.description,
     required this.image,
+    this.id
   });
 
   Map<String, dynamic> toJson() {
@@ -61,10 +61,44 @@ class DeitsModel {
       'time': time,
       'day_id': day_id,
       'description': description,
-      // Image is not included here as it's a file
+      'image': image,
+      'id': id
     };
   }
+
+  factory DeitsModel.fromJson(Map<String, dynamic> json) {
+    return DeitsModel(
+      time: json['time'],
+      day_id: json['day_id'],
+      description: json['description'],
+      image: json['image'],
+      id: json['id']
+    );
+  }
 }
+
+// class AddDeitsModel {
+//   final String time;
+//   final int day_id;
+//   final String description;
+//   final dynamic image;
+
+//   AddDeitsModel({
+//     required this.time,
+//     required this.day_id,
+//     required this.description,
+//     required this.image,
+//   });
+
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'time': time,
+//       'day_id': day_id,
+//       'description': description,
+//       'image': image
+//     };
+//   }
+// }
 
 class UserModel {
   final int id;

@@ -1,57 +1,54 @@
-// ignore_for_file: file_names, avoid_print, avoid_web_libraries_in_flutter
+// ignore_for_file: file_names, avoid_print, avoid_web_libraries_in_flutter, prefer_typing_uninitialized_variables
 
-import 'dart:html' as html;
+import 'dart:typed_data';
 import 'package:adminfitness/models/models.dart';
 import 'package:adminfitness/serveices/adddeits_service.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 
-class DietsController extends GetxController {
+class AddDietsController extends GetxController {
   var description = ''.obs;
   var time = ''.obs;
   var dayId = 0;
-  html.File? imagePath; // Use nullable type
+  late Uint8List fileBytes;
   var isLoading = false.obs;
+  var imagePath ;
 
   final AddDeitsService _addDeitsService = AddDeitsService();
 
   Future<void> pickImage() async {
     try {
-      html.FileUploadInputElement uploadInput = html.FileUploadInputElement();
-      uploadInput.accept = 'image/*'; // Restrict to images
-      uploadInput.click();
-
-      uploadInput.onChange.listen((e) {
-        final files = uploadInput.files;
-        if (files != null && files.isNotEmpty) {
-          imagePath = files[0];
-          print("File selected: ${files[0].name}");
-        } else {
-          print("No file selected or file is empty");
-        }
-      });
+      final result = await FilePicker.platform.pickFiles(type: FileType.any);
+      if (result != null && result.files.isNotEmpty) {
+        fileBytes = result.files.first.bytes!;
+        final fileName = result.files.first.name;
+        print('File selected: $fileName');
+      } else {
+        print("No file selected or file is empty");
+      }
     } catch (e) {
       print("Error picking file: $e");
     }
   }
 
   void addDiet() async {
-    if (description.value.isNotEmpty && time.value.isNotEmpty && imagePath != null) {
+    if (description.value.isNotEmpty && time.value.isNotEmpty) {
       isLoading.value = true;
-
+      print('In addDiet');
       DeitsModel deitsModel = DeitsModel(
         time: time.value,
         day_id: dayId,
         description: description.value,
-        image: imagePath!, // Pass the html.File to the model
+        image: fileBytes, // Pass the Uint8List to the model
       );
-      print('IN CONTROLLER____________________');
+      print('In addDiet2');
       bool success = await _addDeitsService.deits(deitsModel);
       isLoading.value = false;
-      print(success);
       if (success) {
         Get.snackbar('Success', 'Diet added successfully');
-        print(description.value);
-        print(dayId);
+        description.value = '';
+        time.value = '';
+        //imagePath.value = null;
       } else {
         Get.snackbar('Error', 'Failed to add diet');
       }

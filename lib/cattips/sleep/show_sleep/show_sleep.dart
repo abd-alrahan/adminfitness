@@ -13,16 +13,22 @@ class ShowSleep extends StatelessWidget {
         Get.put(ShowSleepController());
     final DeleteTipController deleteTipController =
         Get.put(DeleteTipController());
-
-    // Fetch the tips when the widget is initialized
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showsleepController.fetchTips(showsleepController.categoryId);
-    });
+    showsleepController.fetchTips(showsleepController.categoryId);
+    // // Fetch the tips when the widget is initialized
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   showsleepController.fetchTips(showsleepController.categoryId);
+    // });
 
     return Scaffold(
       body: Stack(
         children: [
           BackgroundImage(image: 'assets/images/homepage.jpeg'),
+          Align(alignment: Alignment.bottomRight,
+          child: SizedBox(
+            width: 225,
+            child: Addtips(buttonText: 'Go to Home Page',routName: '/home'),
+          ),
+          ),
           Center(
             child: BlurContainer(
               height: 600,
@@ -38,6 +44,7 @@ class ShowSleep extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 30, right: 30, top: 20, bottom: 20),
                     child: Obx(() {
+                      
                       if (showsleepController.isLoading.value) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (showsleepController.errorMessage.isNotEmpty) {
